@@ -217,7 +217,6 @@ private:
 
 		command.set_name = tokens[0].value;
 
-		// TODO: long long -> довільна розрядність
 		command.x = BigInt(tokens[2].value);
 		command.y = BigInt(tokens[4].value);
 
@@ -367,7 +366,7 @@ private:
 		// Префікс для дітей цього вузла
 		std::string childPrefix = prefix;
 
-		if (isLast) childPrefix += "└── ";
+		if (isLast) childPrefix += "    ";
 		else childPrefix += "│   ";
 		
 		// Якщо є обидві дитини:
