@@ -145,7 +145,32 @@ depth % 2
 boost::multiprecision::cpp_int
 ```
 
-## Build
+### Компіляція без CMake
+Якщо у вас немає CMake, проєкт можна скомпілювати напряму однією командою, оскільки він складається з одного файлу. Головне — переконатися, що компілятор бачить встановлену бібліотеку **Boost**.
+
+#### Windows (через Developer Command Prompt для Visual Studio)
+Перейдіть у папку з файлом `lab1.cpp` та виконайте:
+```powershell
+cl /EHsc /O2 lab1.cpp /I "C:\path\to\vcpkg\installed\x64-windows\include" /Fe:kdtree.exe
+.\kdtree.exe
+```
+*(Замініть `C:\path\to\vcpkg\...` на ваш реальний шлях до заголовочних файлів Boost, якщо встановлювали через vcpkg).*
+
+#### Linux (Ubuntu / Debian)
+```bash
+g++ -O3 lab1.cpp -o kdtree
+./kdtree
+```
+*(Якщо Boost встановлено через `sudo apt install libboost-all-dev`, система знайде його автоматично).*
+
+#### macOS
+```bash
+g++ -O3 -I /opt/homebrew/include lab1.cpp -o kdtree
+./kdtree
+```
+*(Шлях `-I /opt/homebrew/include` потрібен, якщо Boost встановлювався через Homebrew на комп'ютерах з процесорами Apple Silicon M1/M2/M3).*
+
+### Компіляція через CMake
 ### Windows
 Проєкт можна скомпілювати за допомогою Visual Studio / MSVC та CMake.
 
